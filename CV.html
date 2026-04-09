@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Desarrollador Multiplataforma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables de colores Material Design */
+        :root {
+            --primary: #3f51b5; /* Azul Índigo */
+            --primary-dark: #303f9f;
+            --accent: #ff4081; /* Rosa vibrante para detalles */
+            --bg-color: #f5f5f6; /* Gris muy claro de fondo */
+            --surface: #ffffff; /* Blanco para tarjetas */
+            --text-primary: rgba(0, 0, 0, 0.87);
+            --text-secondary: rgba(0, 0, 0, 0.60);
+            --divider: rgba(0, 0, 0, 0.12);
+            /* Sombra estándar de Material Design (Elevation 2) */
+            --shadow-2dp: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
+            /* Sombra para hover (Elevation 8) */
+            --shadow-8dp: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Estructura Principal */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Cabecera estilo Hero/AppBar */
+        header {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-2dp);
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+        }
+
+        header h2 {
+            font-weight: 300;
+            font-size: 1.3rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+
+        /* Botones estilo Material (Contained & Text) */
+        .contact-links {
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 0.5rem;
+            padding: 10px 24px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.1s;
+        }
+
+        .btn-contained {
+            background-color: var(--accent);
+            color: white;
+            box-shadow: var(--shadow-2dp);
+        }
+
+        .btn-contained:hover {
+            background-color: #f50057;
+            box-shadow: var(--shadow-8dp);
+            transform: translateY(-2px);
+        }
+
+        .btn-outlined {
+            background-color: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-outlined:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Tarjetas Material Design */
+        section {
+            background-color: var(--surface);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-2dp);
+            margin-bottom: 2rem;
+        }
+
+        section h3 {
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 1.4rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--divider);
+        }
+
+        /* Listas de Experiencia */
+        .timeline-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item h4 {
+            margin: 0 0 0.3rem 0;
+            font-size: 1.15rem;
+            font-weight: 500;
+        }
+
+        .timeline-item .company {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .timeline-item p {
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        /* Chips de Material Design para las habilidades */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .chip {
+            background-color: #e0e0e0;
+            color: var(--text-primary);
+            padding: 0 16px;
+            height: 32px;
+            line-height: 32px;
+            border-radius: 16px; /* Bordes totalmente redondeados */
+            font-size: 0.85rem;
+            font-weight: 400;
+            transition: background-color 0.2s;
+        }
+
+        .chip:hover {
+            background-color: #d5d5d5;
+        }
+
+        /* Grid de Proyectos GitHub */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            border: 1px solid var(--divider);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            flex-direction: column;
+            background-color: var(--surface);
+        }
+
+        /* Efecto de elevación al pasar el ratón */
+        .project-card:hover {
+            box-shadow: var(--shadow-8dp);
+            border-color: transparent;
+            transform: translateY(-4px);
+        }
+
+        .project-card a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card a:hover {
+            text-decoration: underline;
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            flex-grow: 1; /* Empuja el lenguaje hacia abajo */
+            margin: 0 0 1rem 0;
+        }
+
+        .project-lang {
+            align-self: flex-start;
+            font-size: 0.8rem;
+            color: var(--primary-dark);
+            background: #e8eaf6;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .loading {
+            text-align: center;
+            color: var(--text-secondary);
+            padding: 2rem;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Jakub Kurkowski</h1>
+        <h2>Desarrollador Multiplataforma (DAM) | Técnico Sistemas y Redes (SMR)</h2>
+        <div class="contact-links">
+            <a href="mailto:tuemail@ejemplo.com" class="btn btn-contained">Enviar Email</a>
+            <a href="https://github.com/DarkGhost1144" target="_blank" class="btn btn-outlined">Ver GitHub</a>
+            <a href="https://linkedin.com/in/tu-perfil" target="_blank" class="btn btn-outlined">LinkedIn</a>
+        </div>
+    </header>
+
+    <section>
+        <h3>Sobre Mí</h3>
+        <p>Soy un profesional de la informática apasionado por la tecnología. Mi formación combina una sólida base en hardware, sistemas y redes (SMR) con el desarrollo de software multiplataforma (DAM). Disfruto resolviendo problemas complejos, optimizando bases de datos y creando soluciones eficientes tanto en front-end como en back-end.</p>
+    </section>
+
+    <section>
+        <h3>Habilidades Técnicas</h3>
+        <div class="skills">
+            <span class="chip">Java</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">Bases de Datos (SQL)</span>
+            <span class="chip">HTML5 & CSS3</span>
+            <span class="chip">Redes Locales</span>
+            <span class="chip">Sistemas Microinformáticos</span>
+            <span class="chip">Git & GitHub</span>
+            <span class="chip">Soporte Técnico</span>
+        </div>
+    </section>
+
+    <section>
+        <h3>Experiencia Profesional</h3>
+        <div class="timeline-item">
+            <h4>Desarrollador de Software (Prácticas DAM)</h4>
+            <span class="company">IES San José - Cortegana, Huelva</span>
+            <p>Desarrollo y mantenimiento de aplicaciones, gestión de bases de datos y creación de herramientas internas aplicando los conocimientos avanzados de programación multiplataforma.</p>
+        </div>
+        <div class="timeline-item">
+            <h4>Técnico Informático (Prácticas SMR)</h4>
+            <span class="company">Informaticasa</span>
+            <p>Mantenimiento preventivo y correctivo de equipos informáticos, diagnóstico de averías de hardware, instalación de sistemas operativos y configuración de redes en entornos locales.</p>
+        </div>
+    </section>
+
+    <section>
+        <h3>Educación Académica</h3>
+        <div class="timeline-item">
+            <h4>Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</h4>
+            <span class="company">FP Grado Superior - En curso</span>
+        </div>
+        <div class="timeline-item">
+            <h4>Técnico en Sistemas Microinformáticos y Redes (SMR)</h4>
+            <span class="company">FP Grado Medio - Titulación obtenida</span>
+        </div>
+    </section>
+
+    <section>
+        <h3>Proyectos en GitHub</h3>
+        <div id="github-projects" class="projects-grid">
+            <p class="loading">Cargando repositorios desde GitHub...</p>
+        </div>
+    </section>
+</div>
+
+<script>
+    const githubUsername = 'DarkGhost1144';
+    const projectsContainer = document.getElementById('github-projects');
+
+    async function fetchGitHubProjects() {
+        try {
+            const response = await fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=6`);
+            if (!response.ok) throw new Error('Error de conexión');
+            
+            const repos = await response.json();
+            projectsContainer.innerHTML = ''; 
+
+            if (repos.length === 0) {
+                projectsContainer.innerHTML = '<p style="color: var(--text-secondary);">Aún no hay repositorios públicos.</p>';
+                return;
+            }
+
+            repos.forEach(repo => {
+                if (!repo.fork) {
+                    const card = document.createElement('div');
+                    card.className = 'project-card';
+                    
+                    const description = repo.description ? repo.description : 'Proyecto sin descripción específica.';
+                    const language = repo.language ? repo.language : 'Multi-lenguaje';
+
+                    card.innerHTML = `
+                        <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+                        <p>${description}</p>
+                        <span class="project-lang">${language}</span>
+                    `;
+                    projectsContainer.appendChild(card);
+                }
+            });
+        } catch (error) {
+            projectsContainer.innerHTML = '<p style="color: #d32f2f;">No se pudieron cargar los repositorios en este momento.</p>';
+            console.error('Error:', error);
+        }
+    }
+
+    fetchGitHubProjects();
+</script>
+
+</body>
+</html>
