@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV | Desarrollador Multiplataforma</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Variables CSS para Temas (Claro y Oscuro) */
+      :root {
+        --primary: #3f51b5;
+        --primary-dark: #303f9f;
+        --accent: #ff4081;
+        --bg-color: #f5f5f6;
+        --surface: #ffffff;
+        --text-primary: rgba(0, 0, 0, 0.87);
+        --text-secondary: rgba(0, 0, 0, 0.6);
+        --divider: rgba(0, 0, 0, 0.12);
+        --nav-bg: rgba(255, 255, 255, 0.9);
+        --shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-hover:
+          0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+
+      [data-theme="dark"] {
+        --primary: #7986cb;
+        --primary-dark: #5c6bc0;
+        --accent: #ff4081;
+        --bg-color: #121212;
+        --surface: #1e1e1e;
+        --text-primary: rgba(255, 255, 255, 0.87);
+        --text-secondary: rgba(255, 255, 255, 0.6);
+        --divider: rgba(255, 255, 255, 0.12);
+        --nav-bg: rgba(30, 30, 30, 0.9);
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+        --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.7);
+      }
+
+      /* Estilos Base y Reset */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-primary);
+        line-height: 1.6;
+        transition:
+          background-color 0.3s,
+          color 0.3s;
+        scroll-behavior: smooth;
+      }
+
+      /* Navegación Fija */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background: var(--nav-bg);
+        backdrop-filter: blur(10px); /* Efecto cristal */
+        border-bottom: 1px solid var(--divider);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        transition: all 0.3s ease;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-primary);
+        font-weight: 500;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      /* Botón Modo Oscuro */
+      .theme-toggle {
+        position: absolute;
+        right: 2rem;
+        background: none;
+        border: 1px solid var(--divider);
+        color: var(--text-primary);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.2s;
+      }
+      .theme-toggle:hover {
+        background-color: var(--surface);
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 80px auto 0;
+        padding: 2rem 1rem;
+      }
+
+      /* Cabecera (Hero) */
+      header {
+        background-color: var(--primary);
+        color: white;
+        text-align: center;
+        padding: 5rem 2rem;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        margin-bottom: 3rem;
+      }
+      header h1 {
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+        letter-spacing: -1px;
+      }
+
+      /* Efecto de escritura en CSS/JS */
+      .typing-container {
+        min-height: 30px;
+        margin-bottom: 1.5rem;
+      }
+      .typewriter {
+        font-size: 1.2rem;
+        font-weight: 300;
+        border-right: 2px solid white;
+        padding-right: 5px;
+        animation: blink 0.75s step-end infinite;
+      }
+      @keyframes blink {
+        50% {
+          border-color: transparent;
+        }
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 10px 24px;
+        font-weight: 500;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: all 0.3s;
+        margin: 0.5rem;
+      }
+      .btn-contained {
+        background-color: var(--accent);
+        color: white;
+        box-shadow: var(--shadow);
+      }
+      .btn-contained:hover {
+        background-color: #f50057;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+      }
+      .btn-outlined {
+        background-color: transparent;
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.7);
+      }
+      .btn-outlined:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-color: white;
+      }
+
+      /* Secciones */
+      section {
+        background-color: var(--surface);
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        margin-bottom: 2.5rem;
+        scroll-margin-top: 100px;
+      }
+      section h2 {
+        color: var(--primary);
+        font-size: 1.8rem;
+        border-bottom: 2px solid var(--divider);
+        padding-bottom: 0.8rem;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Habilidades agrupadas */
+      .skill-group {
+        margin-bottom: 1.5rem;
+      }
+      .skill-group h4 {
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+      }
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+      .chip {
+        background-color: var(--bg-color);
+        color: var(--text-primary);
+        border: 1px solid var(--divider);
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition:
+          transform 0.2s,
+          background-color 0.2s;
+      }
+      .chip:hover {
+        transform: scale(1.05);
+        background-color: var(--divider);
+      }
+
+      /* Timeline (Experiencia/Educación) */
+      .timeline-item {
+        position: relative;
+        padding-left: 20px;
+        border-left: 2px solid var(--primary);
+        margin-bottom: 2rem;
+      }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -6px;
+        top: 5px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--accent);
+      }
+      .timeline-item h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.2rem;
+      }
+      .timeline-item .date {
+        display: inline-block;
+        background-color: var(--primary);
+        color: white;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+      }
+      .timeline-item .company {
+        display: block;
+        color: var(--text-secondary);
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Grid de Proyectos */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+      .project-card {
+        border: 1px solid var(--divider);
+        padding: 1.5rem;
+        border-radius: 8px;
+        background-color: var(--bg-color);
+        display: flex;
+        flex-direction: column;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+        border-color: var(--primary);
+      }
+      .project-card a {
+        text-decoration: none;
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+      .project-card p {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        flex-grow: 1;
+        margin-bottom: 1rem;
+      }
+
+      .lang-badge {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text-primary);
+      }
+      .lang-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 2rem;
+        margin-top: 2rem;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        border-top: 1px solid var(--divider);
+      }
+
+      /* Responsive */
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 2.2rem;
+        }
+        .theme-toggle {
+          position: static;
+          display: block;
+          margin: 10px auto 0;
+        }
+        nav {
+          flex-direction: column;
+          padding: 0.5rem;
+        }
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-links">
+        <a href="#sobre-mi">Sobre Mí</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#educacion">Educación</a>
+        <a href="#proyectos">Proyectos</a>
+      </div>
+      <button class="theme-toggle" id="theme-btn">🌙 Modo Oscuro</button>
+    </nav>
+
+    <div class="container">
+      <header>
+        <h1>Jakub Kurkowski</h1>
+        <div class="typing-container">
+          <span class="typewriter" id="typewriter-text"></span>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:kbkurkowski@gmail.com" class="btn btn-contained"
+            >Contactar</a
+          >
+          <a
+            href="https://github.com/DarkGhost1144"
+            target="_blank"
+            class="btn btn-outlined"
+            >GitHub</a
+          >
+          <a
+            href="https://linkedin.com/in/tu-perfil"
+            target="_blank"
+            class="btn btn-outlined"
+            >LinkedIn</a
+          >
+        </div>
+      </header>
+
+      <section id="sobre-mi">
+        <h2>Sobre Mí</h2>
+        <p>
+          Profesional de la informática con perfil mixto: cuento con una sólida
+          base técnica en hardware y redes (SMR) y conocimientos avanzados en
+          programación de software (DAM). Disfruto creando código limpio,
+          resolviendo problemas de infraestructura y diseñando aplicaciones
+          multiplataforma eficientes.
+        </p>
+      </section>
+
+      <section id="habilidades">
+        <h2>Tecnologías y Habilidades</h2>
+
+        <div class="skill-group">
+          <h4>Desarrollo de Software</h4>
+          <div class="skills">
+            <span class="chip">Java</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">HTML5 & CSS3</span>
+            <span class="chip">Desarrollo Multiplataforma</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h4>Datos y Herramientas</h4>
+          <div class="skills">
+            <span class="chip">Bases de Datos (SQL)</span>
+            <span class="chip">Git & GitHub</span>
+            <span class="chip">Entornos de Desarrollo (IDE)</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h4>Sistemas y Redes</h4>
+          <div class="skills">
+            <span class="chip">Sistemas Operativos</span>
+            <span class="chip">Redes Locales (LAN)</span>
+            <span class="chip">Hardware y Montaje</span>
+            <span class="chip">Soporte Técnico</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="experiencia">
+        <h2>Experiencia Profesional</h2>
+
+        <div class="timeline-item">
+          <span class="date">Marzo de 2025 - Junio de 2025</span>
+          <h3>Desarrollador de Software (Prácticas)</h3>
+          <span class="company">IES San José - Cortegana, Huelva</span>
+          <p>
+            Aplicación práctica de conocimientos del grado DAM. Desarrollo de
+            soluciones de software, mantenimiento de bases de datos y creación
+            de herramientas internas del centro.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <span class="date">Marzo de 2023 - Junio de 2023</span>
+          <h3>Técnico Informático (Prácticas)</h3>
+          <span class="company">Informaticasa</span>
+          <p>
+            Mantenimiento preventivo y correctivo de hardware, instalación de
+            sistemas operativos, configuración de redes y atención técnica a
+            usuarios.
+          </p>
+        </div>
+      </section>
+
+      <section id="educacion">
+        <h2>Educación Académica</h2>
+
+        <div class="timeline-item">
+          <span class="date">Actualidad</span>
+          <h3>
+            FP Grado Superior: Desarrollo de Aplicaciones Multiplataforma (DAM)
+          </h3>
+          <span class="company">Centro de estudios</span>
+        </div>
+
+        <div class="timeline-item">
+          <span class="date">Finalizado</span>
+          <h3>FP Grado Medio: Sistemas Microinformáticos y Redes (SMR)</h3>
+          <span class="company">Centro de estudios</span>
+        </div>
+      </section>
+
+      <section id="proyectos">
+        <h2>Mis Proyectos (GitHub en vivo)</h2>
+        <div id="github-projects" class="projects-grid">
+          <p>Cargando repositorios públicos...</p>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>
+        &copy;
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        [Tu Nombre]. Creado con HTML, CSS, JS y la API de GitHub.
+      </p>
+    </footer>
+
+    <script>
+      /* 1. Lógica del Modo Oscuro */
+      const themeBtn = document.getElementById("theme-btn");
+      const html = document.documentElement;
+
+      // Comprobar si el usuario ya tenía el modo oscuro activado antes
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") {
+        html.setAttribute("data-theme", "dark");
+        themeBtn.textContent = "☀️ Modo Claro";
+      }
+
+      themeBtn.addEventListener("click", () => {
+        if (html.getAttribute("data-theme") === "light") {
+          html.setAttribute("data-theme", "dark");
+          localStorage.setItem("theme", "dark");
+          themeBtn.textContent = "☀️ Modo Claro";
+        } else {
+          html.setAttribute("data-theme", "light");
+          localStorage.setItem("theme", "light");
+          themeBtn.textContent = "🌙 Modo Oscuro";
+        }
+      });
+
+      /* 2. Efecto de Escritura (Typewriter) */
+      const words = [
+        "Técnico Superior DAM",
+        "Técnico SMR",
+        "Desarrollador Multiplataforma",
+      ];
+      let i = 0;
+      let timer;
+
+      function typingEffect() {
+        let word = words[i].split("");
+        var loopTyping = function () {
+          if (word.length > 0) {
+            document.getElementById("typewriter-text").innerHTML +=
+              word.shift();
+          } else {
+            setTimeout(deletingEffect, 2000);
+            return false;
+          }
+          timer = setTimeout(loopTyping, 100);
+        };
+        loopTyping();
+      }
+
+      function deletingEffect() {
+        let word = words[i].split("");
+        var loopDeleting = function () {
+          if (word.length > 0) {
+            word.pop();
+            document.getElementById("typewriter-text").innerHTML =
+              word.join("");
+          } else {
+            if (words.length > i + 1) {
+              i++;
+            } else {
+              i = 0;
+            }
+            typingEffect();
+            return false;
+          }
+          timer = setTimeout(loopDeleting, 50);
+        };
+        loopDeleting();
+      }
+
+      typingEffect(); // Iniciar animación
+
+      /* 3. API de GitHub Mejorada (Colores por lenguaje) */
+      const githubUsername = "DarkGhost1144";
+      const projectsContainer = document.getElementById("github-projects");
+
+      // Diccionario de colores para lenguajes
+      const languageColors = {
+        Java: "#b07219",
+        JavaScript: "#f1e05a",
+        HTML: "#e34c26",
+        CSS: "#563d7c",
+        Python: "#3572A5",
+        "C#": "#178600",
+        PHP: "#4F5D95",
+      };
+
+      async function fetchGitHubProjects() {
+        try {
+          const response = await fetch(
+            `https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=6`,
+          );
+          if (!response.ok) throw new Error("Error al conectar con la API");
+
+          const repos = await response.json();
+          projectsContainer.innerHTML = "";
+
+          const publicRepos = repos.filter((repo) => !repo.fork);
+
+          if (publicRepos.length === 0) {
+            projectsContainer.innerHTML =
+              "<p>No hay repositorios públicos recientes.</p>";
+            return;
+          }
+
+          publicRepos.forEach((repo) => {
+            const card = document.createElement("div");
+            card.className = "project-card";
+
+            const description =
+              repo.description || "Sin descripción disponible.";
+            const language = repo.language || "Varios";
+            const langColor = languageColors[language] || "#8b949e"; // Color por defecto
+
+            card.innerHTML = `
+                        <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+                        <p>${description}</p>
+                        <div class="lang-badge">
+                            <span class="lang-dot" style="background-color: ${langColor}"></span>
+                            ${language}
+                        </div>
+                    `;
+            projectsContainer.appendChild(card);
+          });
+        } catch (error) {
+          projectsContainer.innerHTML =
+            '<p style="color: red;">No se pudieron cargar los proyectos. Inténtalo más tarde.</p>';
+        }
+      }
+
+      fetchGitHubProjects();
+    </script>
+  </body>
+</html>
